@@ -2,23 +2,118 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8">
-    <title>Twitch Signing!</title>
+    <title>Twitch Signing</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.15/tailwind.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        /* Background color */
+        body {
+          background-color: #18181B;
+        }
+        
+        /* Twitch logo */
+        .logo {
+          background-image: url("https://www.twitch.tv/p/assets/uploads/glitch_474x356.png");
+          background-size: contain;
+          background-repeat: no-repeat;
+          height: 50px;
+          width: 150px;
+        }
+        
+        /* Title styling */
+        .title {
+          font-size: 3rem;
+          font-weight: 900;
+          color: #FFFFFF;
+          letter-spacing: -0.05em;
+          margin-top: 4rem;
+        }
+        
+        /* Testimonial styling */
+        .testimonial {
+          background-color: #FFFFFF;
+          border-radius: 0.75rem;
+          box-shadow: 0 20px 30px -10px rgba(0, 0, 0, 0.1);
+          padding: 2.5rem;
+          margin-top: 4rem;
+        }
+        
+        /* Testimonial text styling */
+        .testimonial p {
+          font-size: 1.5rem;
+          font-weight: 500;
+          color: #4B4B4C;
+          margin-bottom: 1.5rem;
+        }
+        
+        /* Testimonial author styling */
+        .testimonial-author {
+          font-size: 1.25rem;
+          font-weight: 600;
+          color: #9CA3AF;
+        }
+        
+        /* Loading spinner */
+        .lds-dual-ring {
+          display: inline-block;
+          width: 64px;
+          height: 64px;
+        }
+        .lds-dual-ring:after {
+          content: " ";
+          display: block;
+          width: 46px;
+          height: 46px;
+          margin: 1px;
+          border-radius: 50%;
+          border: 5px solid #FFF;
+          border-color: #FFF transparent #FFF transparent;
+          animation: lds-dual-ring 1.2s linear infinite;
+        }
+        @keyframes lds-dual-ring {
+          0% {
+            transform: rotate(0deg);
+          }
+          100% {
+            transform: rotate(360deg);
+          }
+        }
+      </style>
   </head>
-  <body class="bg-gray-100">
-    <div class="container mx-auto mt-10">
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-        <div class="relative">
-          <img src="image.png" alt="My Image 1" class="rounded-lg shadow-lg animate__animated animate__fadeInDown animate__slow">
-          <div class="absolute inset-0 bg-black opacity-0 hover:opacity-50 transition duration-300"></div>
-          <div class="absolute bottom-0 left-0 p-4">
-            <h2 class="text-xl text-white font-bold animate__animated animate__fadeInUp animate__delay-1s animate__slower">Image 1</h2>
+  <div class="flex justify-center items-center h-screen">
+    <div class="animate-pulse">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="h-24 w-24 text-purple-700">
+    <path d="M4 0h4v16H4zM10 0h4v16h-4zM16 0h4v16h-4zM4 18h4v6H4zM10 18h4v6h-4zM16 18h4v6h-4z"/>
+    </svg>
+    </div>
+    </div>
+  <body class="bg-gradient-to-br from-purple-900 to-blue-900">
+    <div class="loading-spinner"></div>
+    <header class="py-6 bg-purple-800 animate__animated animate__fadeInDown animate__delay-1s">
+      <div class="container mx-auto px-6 flex justify-between items-center">
+        <div class="text-white text-4xl font-bold tracking-tight">Twitch Signing</div>
+        <button class="bg-white text-purple-800 px-6 py-2 rounded-lg font-bold hover:bg-purple-200 animate__animated animate__fadeInDown animate__delay-2s"><i class="fab fa-twitch"></i> Connect with Twitch</button>
+      </div>
+    </header>
+    <main class="container mx-auto px-6 py-10 grid grid-cols-1 lg:grid-cols-2 gap-10 animate__animated animate__fadeInUp animate__delay-2s">
+      <div class="bg-white rounded-lg shadow-lg p-6">
+        <h2 class="text-2xl font-bold mb-6">Create Your Account</h2>
+        <form>
+          <div class="mb-6">
+            <label class="block text-gray-700 font-bold mb-2" for="username">Username</label>
+            <input class="w-full border border-gray-400 p-3 rounded-lg" type="text" id="username" name="username" required>
           </div>
-    </div>
-    <div class="text-center mt-20">
-      <h1 class="text-4xl text-gray-800 font-bold animate__animated animate__fadeInUp animate__delay-2s animate__slower">Welcome to My Website</h1>
-      <p class="text-lg text-gray-600 mt-4 animate__animated animate__fadeInUp animate__delay-3s animate__slower">This is a simple website with cool animations made using Tailwind CSS and Animate.css</p>
-    </div>
-  </body>
-</html>
+          <div class="mb-6">
+            <label class="block text-gray-700 font-bold mb-2" for="email">Email Address</label>
+            <input class="w-full border border-gray-400 p-3 rounded-lg" type="email" id="email" name="email" required>
+          </div>
+          <div class="mb-6">
+            <button class="w-full bg-purple-800 text-white font-bold py-3 rounded-lg hover:bg-purple-900 transition duration-300 animate__animated animate__pulse animate__infinite">Create Account</button>
+          </div>
+        </form>
+      </div>
+        
+          </body>
+        </html>
+        ```
