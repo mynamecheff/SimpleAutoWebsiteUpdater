@@ -2,12 +2,23 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8">
-    <title>My Website</title>
+    <title>Twitch Signing!</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.15/tailwind.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
   </head>
   <body class="bg-gray-100">
     <div class="container mx-auto mt-10">
-      <img src="image.png" alt="My Image" class="rounded-lg shadow-lg">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div class="relative">
+          <img src="image.png" alt="My Image 1" class="rounded-lg shadow-lg animate__animated animate__fadeInDown animate__slow">
+          <div class="absolute inset-0 bg-black opacity-0 hover:opacity-50 transition duration-300"></div>
+          <div class="absolute bottom-0 left-0 p-4">
+            <h2 class="text-xl text-white font-bold animate__animated animate__fadeInUp animate__delay-1s animate__slower">Image 1</h2>
+          </div>
+    </div>
+    <div class="text-center mt-20">
+      <h1 class="text-4xl text-gray-800 font-bold animate__animated animate__fadeInUp animate__delay-2s animate__slower">Welcome to My Website</h1>
+      <p class="text-lg text-gray-600 mt-4 animate__animated animate__fadeInUp animate__delay-3s animate__slower">This is a simple website with cool animations made using Tailwind CSS and Animate.css</p>
     </div>
   </body>
 </html>
