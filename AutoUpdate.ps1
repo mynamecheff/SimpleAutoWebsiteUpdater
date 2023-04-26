@@ -1,39 +1,41 @@
-# Set the website path and image path
-$websitePath = $PSScriptRoot
-$imagePath = "$PSScriptRoot\image.png"
-$tempImagePath = "$PSScriptRoot\image1.png"
+# Get the path of the script directory
+$scriptPath = Split-Path -Parent $MyInvocation.MyCommand.Path
 
-# Prompt to enable autorun on startup
-do {
-    $autorun = Read-Host "Do you want to enable autorun on startup? (y/n): "
-} while ($autorun -notin @('y','n'))
-
-# Set autorun registry value
-if ($autorun -eq 'y') {
-    $regPath = "HKCU:\Software\Microsoft\Windows\CurrentVersion\Run"
-    $regName = "AutoUpdateWebsite"
-    $regValue = $PSCommandPath
-    Set-ItemProperty -Path $regPath -Name $regName -Value $regValue
+# Prompt user to enable autorun on startup
+$autorun = Read-Host "Do you want to enable autorun on startup? (y/n)"
+if ($autorun -eq "y") {
+    $autorunPath = "HKCU:\Software\Microsoft\Windows\CurrentVersion\Run"
+    Set-ItemProperty -Path $autorunPath -Name "AutoUpdate" -Value $MyInvocation.MyCommand.Definition
 }
 
+# Initialize variables
+$tempImagePath = "$scriptPath\tempimage.png"
+$latestImageHash = ""
+
 while ($true) {
-    # Check if the image has changed
-    $imageHash = Get-FileHash $imagePath
-    $tempImageHash = Get-FileHash $tempImagePath
-    if ($imageHash.Hash -ne $tempImageHash.Hash) {
-        # Copy the image and commit changes
-        Copy-Item $imagePath $tempImagePath -Force
-        Remove-Item $imagePath
-        Rename-Item $tempImagePath -NewName "image.png"
-        cd $websitePath
+    # Copy image to script directory
+    Copy-Item "$scriptPath\image.png" $tempImagePath -Force
+
+    # Get hash of latest image
+    $latestImageHash = (Get-FileHash $tempImagePath).Hash
+
+    # Compare hash of latest image with previous hash
+    if ($latestImageHash -ne $previousImageHash) {
+        # Copy latest image to website directory
+        Copy-Item $tempImagePath "$websitePath\image.png" -Force
+
+        # Change to website directory
+        Set-Location $websitePath
+
+        # Add, commit, and push changes
         git add .
         git commit -m "Update image"
         git push origin main
+
+        # Update previous hash
+        $previousImageHash = $latestImageHash
     }
 
-    # Wait for 10 minutes
-    Start-Sleep -Seconds 5
+    # Wait 10 minutes before checking again
+    Start-Sleep -Seconds 600
 }
-
-# Close the console window
-Exit
