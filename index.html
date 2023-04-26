@@ -1,105 +1,51 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8">
-    <title>Twitch Signing</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.15/tailwind.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-    <style>
-        /* Background color */
-        body {
-          background-color: #18181B;
-        }
-        
-        /* Twitch logo */
-        .logo {
-          background-image: url("https://www.twitch.tv/p/assets/uploads/glitch_474x356.png");
-          background-size: contain;
-          background-repeat: no-repeat;
-          height: 50px;
-          width: 150px;
-        }
-        
-        /* Title styling */
-        .title {
-          font-size: 3rem;
-          font-weight: 900;
-          color: #FFFFFF;
-          letter-spacing: -0.05em;
-          margin-top: 4rem;
-        }
-        
-        /* Testimonial styling */
-        .testimonial {
-          background-color: #FFFFFF;
-          border-radius: 0.75rem;
-          box-shadow: 0 20px 30px -10px rgba(0, 0, 0, 0.1);
-          padding: 2.5rem;
-          margin-top: 4rem;
-        }
-        
-        /* Testimonial text styling */
-        .testimonial p {
-          font-size: 1.5rem;
-          font-weight: 500;
-          color: #4B4B4C;
-          margin-bottom: 1.5rem;
-        }
-        
-        /* Testimonial author styling */
-        .testimonial-author {
-          font-size: 1.25rem;
-          font-weight: 600;
-          color: #9CA3AF;
-        }
-        
-        /* Loading spinner */
-        .lds-dual-ring {
-          display: inline-block;
-          width: 64px;
-          height: 64px;
-        }
-        .lds-dual-ring:after {
-          content: " ";
-          display: block;
-          width: 46px;
-          height: 46px;
-          margin: 1px;
-          border-radius: 50%;
-          border: 5px solid #FFF;
-          border-color: #FFF transparent #FFF transparent;
-          animation: lds-dual-ring 1.2s linear infinite;
-        }
-        @keyframes lds-dual-ring {
-          0% {
-            transform: rotate(0deg);
-          }
-          100% {
-            transform: rotate(360deg);
-          }
-        }
-      </style>
-  </head>
-  <div class="flex justify-center items-center h-screen">
-    <div class="animate-pulse">
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="h-24 w-24 text-purple-700">
-    <path d="M4 0h4v16H4zM10 0h4v16h-4zM16 0h4v16h-4zM4 18h4v6H4zM10 18h4v6h-4zM16 18h4v6h-4z"/>
-    </svg>
-    </div>
-    </div>
-  <body class="bg-gradient-to-br from-purple-900 to-blue-900">
-    <div class="loading-spinner"></div>
-    <header class="py-6 bg-purple-800 animate__animated animate__fadeInDown animate__delay-1s">
-      <div class="container mx-auto px-6 flex justify-between items-center">
-        <div class="text-white text-4xl font-bold tracking-tight">Twitch Signing</div>
-        <button class="bg-white text-purple-800 px-6 py-2 rounded-lg font-bold hover:bg-purple-200 animate__animated animate__fadeInDown animate__delay-2s"><i class="fab fa-twitch"></i> Connect with Twitch</button>
-      </div>
-    </header>
-    <main class="container mx-auto px-6 py-10 grid grid-cols-1 lg:grid-cols-2 gap-10 animate__animated animate__fadeInUp animate__delay-2s">
-      <div class="bg-white rounded-lg shadow-lg p-6">
-      </div>
-        
-          </body>
-        </html>
-        ```
+<html>
+<head>
+	<title>My Website</title>
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss/dist/tailwind.min.css">
+	<style>
+		/* Custom styles */
+		#logo {
+			animation: spin 2s linear infinite;
+		}
+
+		@keyframes spin {
+			from { transform: rotate(0deg); }
+			to { transform: rotate(360deg); }
+		}
+	</style>
+</head>
+<body>
+	<!-- Twitch-style logo -->
+	<div class="flex justify-center items-center h-screen">
+		<img id="logo" src="https://static-cdn.jtvnw.net/jtv_user_pictures/0e74ca31-9276-48a6-9f74-cf2be6898a81-profile_image-300x300.png" alt="Logo" class="w-16 h-16">
+	</div>
+
+	<!-- Image content -->
+	<div class="flex justify-center items-center h-screen hidden" id="imageContainer">
+		<img id="image" src="image.png" alt="Image" class="w-3/4 h-auto">
+	</div>
+
+	<script>
+		// Show image container on logo click
+		const logo = document.getElementById('logo');
+		const imageContainer = document.getElementById('imageContainer');
+		logo.addEventListener('click', () => {
+			logo.classList.add('hidden');
+			imageContainer.classList.remove('hidden');
+		});
+
+		// Show fullscreen on image click
+		const image = document.getElementById('image');
+		image.addEventListener('click', () => {
+			if (image.requestFullscreen) {
+				image.requestFullscreen();
+			} else if (image.webkitRequestFullscreen) {
+				image.webkitRequestFullscreen();
+			} else if (image.msRequestFullscreen) {
+				image.msRequestFullscreen();
+			}
+		});
+	</script>
+</body>
+</html>
