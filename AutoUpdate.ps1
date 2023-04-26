@@ -4,13 +4,25 @@ if (-not ([Security.Principal.WindowsPrincipal] [Security.Principal.WindowsIdent
   Exit
 }
 
-# Prompt to enable autorun on startup
-$title = "Autorun on startup"
+# Prompt the user to confirm
 $message = "Do you want to enable autorun on startup?"
-$yes = New-Object System.Management.Automation.Host.ChoiceDescription "&Yes", "Enables the script to run on startup."
-$no = New-Object System.Management.Automation.Host.ChoiceDescription "&No", "Disables autorun on startup."
-$options = [System.Management.Automation.Host.ChoiceDescription[]]($yes, $no)
-$result = $Host.UI.PromptForChoice($title, $message, $options, 0)
+$choice = [System.Management.Automation.Host.ChoiceDescription[]]@("&Yes", "&No")
+$result = $Host.UI.PromptForChoice("Confirmation", $message, $choice, 0)
+
+if ($result -eq 0) {
+    # User confirmed, enable autorun on startup
+    # ...
+    Write-Host "Autorun on startup has been enabled." -ForegroundColor Green
+} else {
+    # User canceled, disable autorun on startup
+    # ...
+    Write-Host "Autorun on startup has been disabled." -ForegroundColor Yellow
+}
+
+# Close the console window
+Out-Host -NoNewline
+
+
 
 if ($result -eq 0) {
   $taskName = "UpdateImage"
