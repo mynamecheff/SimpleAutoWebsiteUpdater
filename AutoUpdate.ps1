@@ -32,7 +32,7 @@ while ($true) {
     }
 
     # Wait for 10 minutes
-    Start-Sleep -Seconds 600
+    Start-Sleep -Seconds 5
 }
 
 # Close the console window
